@@ -26,9 +26,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body class="backrooms-theme">
+    <div id="screen-glitch-overlay" class="screen-glitch-overlay"></div>
+
+    <!-- Black Screen Fade Overlay -->
+    <div id="black-screen" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000000; z-index:999997; pointer-events:none; transition: opacity 4s ease-in-out; cursor: none;"></div>
+
+    <!-- Login Screen Overlay -->
+    <div id="login-screen" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index:999998; display:flex; justify-content:center; align-items:center; flex-direction:column; color:var(--color-terminal); font-family:var(--font-retro); opacity:0; transition: opacity 1s ease-in-out; cursor: none;">
+        <div style="border: 2px solid var(--color-terminal); padding: 40px; background: #050505; box-shadow: 0 0 20px var(--color-terminal); text-align:center; max-width: 90%; width: 500px;">
+            <h2 style="margin-bottom: 40px; text-shadow: 0 0 10px var(--color-terminal); letter-spacing: 2px;">WELCOME TO MY THEBACKROOMS</h2>
+            
+            <div style="margin-bottom: 25px; text-align:left; display:flex; align-items:center;">
+                <label style="width:140px; font-size: 18px;">USERNAME:</label>
+                <input type="text" id="login-username" placeholder="admin" style="flex:1; background:transparent; border:none; border-bottom:1px solid var(--color-terminal); color:var(--color-terminal); font-family:var(--font-retro); outline:none; font-size:18px; padding:5px; caret-color: var(--color-terminal);">
+            </div>
+            
+            <div style="margin-bottom: 40px; text-align:left; display:flex; align-items:center;">
+                <label style="width:140px; font-size: 18px;">PASSWORD:</label>
+                <input type="password" id="login-password" placeholder="••••••••" style="flex:1; background:transparent; border:none; border-bottom:1px solid var(--color-terminal); color:var(--color-terminal); font-family:var(--font-retro); outline:none; font-size:18px; padding:5px; caret-color: var(--color-terminal);">
+            </div>
+            
+            <button id="login-submit-btn" style="background:transparent; border:1px solid var(--color-terminal); color:var(--color-terminal); font-family:var(--font-retro); padding:12px 40px; font-size:20px; cursor:pointer; transition:all 0.3s; width: 100%;">[ AUTHENTICATE ]</button>
+            
+            <p id="login-error-msg" style="color:var(--color-terminal); margin-top:20px; height:20px; opacity:0; transition:opacity 0.3s; font-size: 16px;">ACCESS GRANTED</p>
+        </div>
+    </div>
+
+    <!-- System Boot Intro -->
+    <div id="intro-screen" class="intro-screen" style="cursor: none;">
+        <!-- A-Sync 로고/타이틀 추가 -->
+        <h1 style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); color: var(--color-terminal); font-family: var(--font-retro); letter-spacing: 10px; opacity: 0.9; text-shadow: 0 0 15px var(--color-terminal); font-size: 28px; z-index: 10; margin: 0; white-space: nowrap;">A-SYNC RESEARCH</h1>
+        <div class="intro-content" id="intro-container">
+            <p id="intro-text-1"></p>
+            <p id="intro-text-2"></p>
+            <p id="intro-text-3"></p>
+        </div>
+    </div>
 
     <!-- VHS Scanline/Noise Overlay -->
     <div class="vhs-overlay"></div>
@@ -387,7 +423,7 @@
             <div class="modal-content">
                 <div class="video-ratio-box">
                     <!-- The Backrooms Found Footage theme matching video -->
-                    <iframe src="https://www.youtube.com/embed/H4dGvqNjmsY?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="trailer-iframe"></iframe>
+                    <iframe src="https://www.youtube.com/embed/PIiJSKzF82c?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="trailer-iframe"></iframe>
                 </div>
             </div>
         </div>
@@ -472,6 +508,7 @@
     <!-- Toast Notification (Corrupted) -->
     <div class="toast terminal-toast" id="toast">SYSTEM: 코드가 복사되었습니다.</div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=2"></script>
 </body>
 </html>
+

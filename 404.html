@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .error-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        .error-code {
+            font-size: 8rem;
+            color: #d11111;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px red;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: #ccc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        .error-nav-btn {
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body class="backrooms-theme">
+
+    <div class="vhs-overlay"></div>
+    <div class="vhs-static"></div>
+
+    <div class="error-page container">
+        <h1 class="error-code glitch-text" data-text="404">- 404 - <br>ERROR</h1>
+        <p class="error-message">
+            Error: You have entered an unknown zone.<br>
+            There is nothing here. Leave quickly before 'they' detect your presence.
+        </p>
+        <a href="https://github.com/GMS-H-Capstone-2026/waveppp6-The_backrooms#%EA%B8%B0%EB%A1%9D%ED%95%A0-%EC%A0%90%EC%88%98" class="btn btn-primary btn-glow font-retro error-nav-btn">Main menu</a>
+    </div>
+
+</body>
+</html>
