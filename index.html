@@ -29,10 +29,9 @@
     <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body class="backrooms-theme">
-    <div id="screen-glitch-overlay" class="screen-glitch-overlay"></div>
 
     <!-- Black Screen Fade Overlay -->
-    <div id="black-screen" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:#000000; z-index:999997; pointer-events:none; transition: opacity 4s ease-in-out; cursor: none;"></div>
+    <div id="black-screen" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); z-index:999997; pointer-events:none; transition: opacity 2.5s ease-in-out; cursor: none;"></div>
 
     <!-- Login Screen Overlay -->
     <div id="login-screen" class="hidden" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index:999998; display:flex; justify-content:center; align-items:center; flex-direction:column; color:var(--color-terminal); font-family:var(--font-retro); opacity:0; transition: opacity 1s ease-in-out; cursor: none;">
@@ -70,445 +69,58 @@
     <div class="vhs-overlay"></div>
     <div class="vhs-static"></div>
 
-    <!-- Header Navigation -->
-    <header class="navbar" id="main-navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <span class="logo-text">THE</span><span class="logo-highlight">BACKROOMS</span>
-            </a>
-            <nav class="nav-menu" id="nav-menu">
-                <a href="#about" class="nav-link">아날로그 기록</a>
-                <a href="#features" class="nav-link">생존 수칙</a>
-                <a href="#gallery" class="nav-link">목격담</a>
-                <a href="#specs" class="nav-link">버전</a>
-                <a href="#reviews" class="nav-link">탐사 일지</a>
-                <a href="#purchase" class="btn btn-secondary nav-buy-btn">%할인 가격%</a>
-            </nav>
-            <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 토글">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
-    </header>
+    <!-- A-Sync Database Main Portal -->
+    <div id="async-portal">
+        <header class="async-header">
+            <div class="async-logo">A-SYNC <span>RESEARCH DATABASE</span></div>
+            <div class="security-level">CLEARANCE: LEVEL 4 (OVERSEER)</div>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg" style="background-image: linear-gradient(to bottom, rgba(10, 9, 8, 0.5), rgba(10, 9, 8, 0.98)), url('./assets/hero_bg.jpg');"></div>
-        <div class="hero-content-wrapper">
-            <div class="container hero-container">
-                <div class="hero-text-block">
-                    <span class="hero-badge glitch-flicker">⚠️ [접속 승인] 기밀 프로젝트 #009_LEVEL_0</span>
-                    <h1 class="hero-title glitch-text" data-text="THE BACKROOMS">THE BACKROOMS<br><span class="gradient-text font-retro">LEVEL -0-</span></h1>
-                    <p class="hero-description">
-                        노란색 벽지, 축축하고 불쾌한 젖은 카펫 냄새, 그리고 끊임없이 웅웅거리는 형광등 소리... 당신이 실수로 현실에서 떨어져 나갔을 때 그저 어느 평범한 공간. '그들'이 당신의 존재를 알아차리기 전에 탈출구를 찾으십시오.
-                    </p>
-                    <div class="hero-cta-group">
-                        <a href="#purchase" class="btn btn-primary btn-glow font-retro">지금 구매</a>
-                        <button class="btn btn-outline font-retro" id="play-trailer-btn">
-                            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                            기록일지 재생
-                        </button>
-                    </div>
-                </div>
-                <div class="hero-media-block">
-                    <div class="hero-card-glowing">
-                        <div class="video-container vhs-frame">
-                            <div class="vhs-rec-indicator">● REC</div>
-                            <div class="vhs-time-indicator">00:04:29 AM</div>
-                            <img src="./assets/screenshot_1.jpg" alt="The Backrooms Level 0" class="video-placeholder">
-                            <button class="play-overlay-btn" id="play-video-btn" aria-label="재생">
-                                <span class="play-arrow"></span>
-                            </button>
-                            <div class="video-title-bar">TAPE_092: FOUND FOOTAGE - FIRST EXPLORATION</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <main class="async-dashboard">
+            <aside class="async-sidebar">
+                <ul>
+                    <li class="active">PROJECT KV-31</li>
+                    <li>ENTITY LOGS</li>
+                    <li>EXPEDITION REPORTS</li>
+                    <li>QUARANTINE PROTOCOL</li>
+                </ul>
+            </aside>
 
-    <!-- Game Description Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">ANALOG LOGFILE</span>
-                <h2 class="section-title text-flicker">아날로그 기록 및 탐사 문서</h2>
-                <div class="header-line"></div>
-            </div>
-            <div class="about-grid">
-                <div class="about-card-large">
-                    <div class="about-card-img" style="background-image: url('./assets/screenshot_1.jpg');"></div>
-                    <div class="about-card-content">
-                        <h3>끝없는 노란색의 미로 (Level 0)</h3>
-                        <p>
-                            무작위로 생성된 텅 빈 방들이 불규칙하게 얽혀 있는 거대한 공간입니다. 빛바랜 노란색 벽지와 불쾌하게 젖어 있는 카펫은 당신의 시각과 후각을 자극하며, 끊임없는 형광등의 웅웅거리는 진동 소리는 시간이 흐를수록 정신을 감소시킵니다.
-                        </p>
-                    </div>
-                </div>
-                <div class="about-card-large reverse">
-                    <div class="about-card-img" style="background-image: url('./assets/screenshot_2.jpg');"></div>
-                    <div class="about-card-content">
-                        <h3>당신은 거기서 혼자가 아닙니다.(Entities)</h3>
-                        <p>
-                            당신이 반복 되는 공간 속에서 방황할 때, 어두운 코너나 벽 너머에서 희미한 발소리나 정체불명의 비명 소리가 들릴 수 있습니다. 무언가가 당신을 쫓는다면, 뒤돌아보지 마십시오. 그것이 당신의 기척을 눈치채기 전에 최대한 멀리 도망쳐야 합니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">SURVIVAL PROTOCOLS</span>
-                <h2 class="section-title">생존을 위한 핵심 수칙</h2>
-                <div class="header-line"></div>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
-                            <line x1="12" y1="2" x2="12" y2="22"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                        </svg>
-                    </div>
-                    <h3>1인칭 카메라 시점</h3>
-                    <p>실제 90년대 비디오카메라로 녹화한 듯한 어지러운 스캔라인, 렌즈 왜곡, 모션 블러 및 지글거리는 화질을 통해 압도적인 현실 공포를 선사합니다.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2a10 10 0 0 0-10 10c0 5.523 4.477 10 10 10s10-4.477 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                    </div>
-                    <h3>정신력(Sanity) 관리</h3>
-                    <p>어둠 속에 방치되거나 형광등 웅웅거림에 장시간 노출되면 환청을 들으며 미쳐갑니다. 아몬드 워터(Almond Water)을 찾아 즉시 정신을 각성 시키시오.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" />
-                        </svg>
-                    </div>
-                    <h3>절차적 변형 구조</h3>
-                    <p>게임을 시작할 때마다 벽지와 파이프, 방들의 배치가 계속 바뀝니다. 지도나 기억력에 의존할 수 없는 고독한 탈출이 매번 반복됩니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Screenshot Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">ENCOUNTER LOGS</span>
-                <h2 class="section-title">기록된 목격 사진 자료</h2>
-                <div class="header-line"></div>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-index="0">
-                    <img src="./assets/screenshot_1.jpg" alt="Level 0: 노란 벽지와 젖은 카펫 구조">
-                    <div class="gallery-overlay">
-                        <span>파일 복원</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-index="1">
-                    <img src="./assets/screenshot_2.jpg" alt="Level 1: 기괴한 파이프 지하 통로">
-                    <div class="gallery-overlay">
-                        <span>파일 복원</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-index="2">
-                    <img src="./assets/screenshot_3.jpg" alt="Level 37: 몽환적이지만 기괴한 풀룸(Poolrooms)">
-                    <div class="gallery-overlay">
-                        <span>파일 복원</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- System Requirements Section -->
-    <section class="specs" id="specs">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">TERMINAL SPECS</span>
-                <h2 class="section-title">버전 및 사양</h2>
-                <div class="header-line"></div>
-            </div>
-            <div class="specs-wrapper">
-                <div class="specs-tabs">
-                    <button class="spec-tab-btn active font-retro" data-tab="min">최소 사양</button>
-                    <button class="spec-tab-btn font-retro" data-tab="rec">권장 사양</button>
-                </div>
-                <div class="specs-content active" id="spec-min">
-                    <ul class="spec-list">
-                        <li><strong>운영체제:</strong> Windows 10 (64-bit)</li>
-                        <li><strong>프로세서:</strong> Intel Core i5-6600K | AMD Ryzen 5 1400</li>
-                        <li><strong>메모리:</strong> 8 GB RAM</li>
-                        <li><strong>그래픽 카드:</strong> NVIDIA GeForce GTX 1060 (3GB) | AMD Radeon RX 570</li>
-                        <li><strong>DirectX:</strong> 버전 11</li>
-                        <li><strong>저장공간:</strong> 15 GB 사용 가능 공간</li>
-                    </ul>
-                </div>
-                <div class="specs-content" id="spec-rec">
-                    <ul class="spec-list">
-                        <li><strong>운영체제:</strong> Windows 10/11 (64-bit)</li>
-                        <li><strong>프로세서:</strong> Intel Core i7-8700K | AMD Ryzen 5 3600X</li>
-                        <li><strong>메모리:</strong> 16 GB RAM</li>
-                        <li><strong>그래픽 카드:</strong> NVIDIA GeForce RTX 2060 (6GB) | AMD Radeon RX 5600 XT (빛 추적 및 그림자 필수)</li>
-                        <li><strong>DirectX:</strong> 버전 12</li>
-                        <li><strong>저장공간:</strong> 15 GB 사용 가능 공간 (SSD 권장)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section class="reviews" id="reviews">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">DIARY</span>
-                <h2 class="section-title">생존자 및 평론가의 탐사 일지</h2>
-                <div class="header-line"></div>
-            </div>
-            <div class="reviews-slider">
-                <div class="review-card">
-                    <div class="review-stars">★★★★</div>
-                    <p class="review-text">"아무도 없는데 주변에서 이상한 소리가 나고 누군가 계속 속삭이는 듯 무서움!!"</p>
-                    <div class="review-author">
-                        <span class="author-name">Dabies_port</span>
-                        <span class="author-title">Steam 베스트 평가</span>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"최근 공포 게임 중 가장 재밌게 플레이함 엔티티가 엄청남 도망을 못가가"</p>
-                    <div class="review-author">
-                        <span class="author-name">Alex_lay</span>
-                        <span class="author-title">PC Gamer</span>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-stars">★★★★★</div>
-                    <p class="review-text">"마티 내가 진짜 백룸의 들어온듯 현실의 내 방 조명까지 의심스럽게 만든다. 백룸 장르 공포 게임 중 가장 원작에 충실한 작품."</p>
-                    <div class="review-author">
-                        <span class="author-name">김푸린</span>
-                        <span class="author-title">스피드런 전문 게임 스트리머</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Purchase Section -->
-    <section class="purchase" id="purchase">
-        <div class="container">
-            <div class="section-header">
-                <span class="subtitle">Right now</span>
-                <h2 class="section-title text-flicker">%Sale price%</h2>
-                <div class="header-line"></div>
-            </div>
-            <div class="purchase-grid">
-                <!-- Direct Website Purchase Card (Premium Highlighted) -->
-                <div class="purchase-card direct-card backrooms-card">
-                    <div class="card-badge glitch-flicker">특별 특가 (45% OFF)</div>
-                    <h3 class="font-retro">The Backrooms: Survivor Edition</h3>
-                    <p class="card-desc font-retro">Steam에서 직접 구매하고 스팀 인증 번호 및 기밀 미공개 패키지를 획득하십시오.</p>
-                    <div class="price-block">
-                        <span class="price-original">₩19,900</span>
-                        <span class="price-current font-retro">₩15,990</span>
-                    </div>
-                    <ul class="card-features">
-                        <li>✓ 정식 게임 스팀(Steam) 플랫폼 디지털 코드</li>
-                        <li>✓ 아몬드 워터 및 생존용 도구 세트</li>
-                        <li>✓ Level 0 연구소 기밀 무손실 환경음 사운드트랙 (FLAC)</li>
-                        <li>✓ VHS 필터링 원본 컨셉 아트북 및 월페이퍼 세트</li>
-                        <li>✓ 인게임 생존자용 아날로그 캠코더 커스텀 스킨</li>
-                    </ul>
-                    <button class="btn btn-primary btn-glow btn-block font-retro" id="direct-buy-btn">즉시 구매</button>
+            <section class="async-content">
+                <div class="panel warning-panel">
+                    <h3>[ UNAUTHORIZED ACCESS ATTEMPT DETECTED ]</h3>
+                    <p>Origin: UNKNOWN_VECTOR. Please proceed with caution. Reality anchors are currently at 84% capacity.</p>
                 </div>
 
-                <!-- Third Party Platform Links -->
-                <div class="purchase-card platforms-card">
-                    <h3>외부 웹페이지</h3>
-                    <p class="card-desc">타사 게임 플랫폼를 통해서도 확보할 수 있습니다.</p>
-                    
-                    <div class="platform-buttons-list">
-                        <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" class="platform-btn steam-btn font-retro">
-                            <span class="platform-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                                    <path d="M12 .007c-3.155 0-6.002 1.226-8.12 3.208l4.492 1.848c.57-.35 1.25-.558 1.98-.558a4.14 4.14 0 0 1 3.97 2.977l5.485-2.285A9.97 9.97 0 0 0 12 .007zm-1.65 6.345a2.5 2.5 0 0 0-2.316 1.545l4.316 1.777a2.5 2.5 0 0 0-2-3.322zm-7.142.87a9.92 9.92 0 0 0-1.85 4.382c.07-.015.132-.047.2-.047.96 0 1.78.618 2.08 1.48l9.043-3.766a2.49 2.49 0 0 0-1.576-1.12L3.208 7.222zm1.616 6.071c-.772 0-1.4.628-1.4 1.4s.628 1.4 1.4 1.4 1.4-.628 1.4-1.4-.628-1.4-1.4-1.4zM12 23.993c3.082 0 5.875-1.173 7.978-3.076l-5.322-2.215a4.15 4.15 0 0 1-4.156-2.58l-4.5 1.85a9.96 9.96 0 0 0 5.996 5.86c.002.062.004.101.004.161z"/>
-                                </svg>
-                            </span>
-                            <span>STEAM store</span>
-                        </a>
-                        <a href="https://store.epicgames.com" target="_blank" rel="noopener noreferrer" class="platform-btn epic-btn font-retro">
-                            <span class="platform-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                                    <path d="M12 0L2.4 3v13.5l9.6 7.5 9.6-7.5V3zm0 2.87L18.86 5v10.37L12 19.86l-6.86-4.49V5zm0 2.27L8 10h3v4h2v-4h3z"/>
-                                </svg>
-                            </span>
-                            <span>EPIC store</span>
-                        </a>
-                        <a href="https://www.gog.com" target="_blank" rel="noopener noreferrer" class="platform-btn gog-btn font-retro">
-                            <span class="platform-icon">
-                                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
-                                </svg>
-                            </span>
-                            <span>GOG store</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container newsletter-container">
-            <h3 class="font-retro">기밀 프로젝트</h3>
-            <p>백룸의 새로운 구역 발견 소식, 연구 통신 패치, 할인 정보를 수신하십시오.</p>
-            <form class="newsletter-form" id="newsletter-form">
-                <input type="email" placeholder="수신받을 이메일 주소를 입력하세요" required id="newsletter-email" aria-label="이메일 주소" class="font-retro">
-                <button type="submit" class="btn btn-primary font-retro">확인</button>
-            </form>
-            <div class="newsletter-msg" id="newsletter-msg"></div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-container">
-            <div class="footer-info">
-                <div class="footer-logo">THE<span>BACKROOMS</span></div>
-                <p>백룸 - 본 페이지는 기밀 복원 샘플 페이지입니다.</p>
-            </div>
-            <div class="footer-links font-retro">
-                <h4>바로가기</h4>
-                <a href="#about">아날로그 기록</a>
-                <a href="#features">생존 수칙</a>
-                <a href="#gallery">목격 사진</a>
-                <a href="#specs">단말기 사양</a>
-            </div>
-            <div class="footer-social font-retro">
-                <h4>비상 교신망</h4>
-                <div class="social-icons">
-                    <a href="#" aria-label="YouTube">YT</a>
-                    <a href="#" aria-label="Discord">DC</a>
-                    <a href="#" aria-label="Twitter">TW</a>
-                    <a href="#" aria-label="Reddit">RD</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 A.S.I.P. Research Foundation. All rights reserved. Warning: Unauthorised access is strictly tracked.</p>
-        </div>
-    </footer>
-
-    <!-- Video/Trailer Modal (VHS Corrupted Style) -->
-    <div class="modal" id="video-modal">
-        <div class="modal-backdrop" id="video-modal-backdrop"></div>
-        <div class="modal-wrapper modal-video-wrapper vhs-glow-frame">
-            <button class="modal-close" id="video-modal-close" aria-label="닫기">&times;</button>
-            <div class="modal-content">
-                <div class="video-ratio-box">
-                    <!-- The Backrooms Found Footage theme matching video -->
-                    <iframe src="https://www.youtube.com/embed/PIiJSKzF82c?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="trailer-iframe"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Lightbox Gallery Modal -->
-    <div class="modal" id="lightbox-modal">
-        <div class="modal-backdrop" id="lightbox-backdrop"></div>
-        <div class="modal-wrapper modal-lightbox-wrapper">
-            <button class="modal-close" id="lightbox-close" aria-label="닫기">&times;</button>
-            <div class="modal-content lightbox-content">
-                <img src="" id="lightbox-img" alt="확대된 이미지">
-                <div class="lightbox-caption" id="lightbox-caption"></div>
-                <button class="lightbox-nav prev" id="lightbox-prev" aria-label="이전 이미지">&#10094;</button>
-                <button class="lightbox-nav next" id="lightbox-next" aria-label="다음 이미지">&#10095;</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Purchase/Checkout Modal (A.S.I.P. Terminal Database Style) -->
-    <div class="modal" id="checkout-modal">
-        <div class="modal-backdrop" id="checkout-backdrop"></div>
-        <div class="modal-wrapper modal-checkout-wrapper terminal-border">
-            <button class="modal-close" id="checkout-close" aria-label="닫기">&times;</button>
-            <div class="modal-content checkout-content terminal-bg">
-                <div class="checkout-header">
-                    <h2 class="terminal-green">A.S.I.P. SECURE TERMINAL v4.1</h2>
-                    <p class="terminal-muted">보안 연결을 통해 생존키 암호 결제를 승인하고 스팀키를 추출합니다.</p>
-                </div>
-                
-                <div class="checkout-body" id="checkout-form-container">
-                    <div class="order-summary terminal-summary">
-                        <span class="item-name terminal-green">TAPE: Lost in the Liminal (Direct)</span>
-                        <span class="item-price terminal-yellow">₩11,000</span>
+                <div class="panel-grid">
+                    <div class="panel data-panel">
+                        <h3>FILE: LEVEL_0.DAT</h3>
+                        <p><strong>Description:</strong> A non-linear space resembling the back rooms of a commercial building. Approximately 600 million square miles of randomly segmented rooms.</p>
+                        <p class="redacted-text">Visual contact with entity <span class="redacted">[REDACTED]</span> confirmed at 1400 hours.</p>
+                        <button class="db-btn">VIEW FULL REPORT</button>
                     </div>
                     
-                    <form id="checkout-form" class="checkout-form">
-                        <div class="form-group">
-                            <label for="buyer-email" class="terminal-label">수신용 이메일 터미널</label>
-                            <input type="email" id="buyer-email" required placeholder="name@domain.com" class="terminal-input">
+                    <div class="panel video-panel">
+                        <h3>SECURITY FOOTAGE - SECTOR 4</h3>
+                        <div class="video-container" style="margin-top:15px; border: 1px solid #333;">
+                            <iframe width="100%" height="250" src="https://www.youtube.com/embed/H4dGpz6cnHo?autoplay=1&mute=1&loop=1&playlist=H4dGpz6cnHo" title="The Backrooms (Found Footage)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <div class="form-group">
-                            <label for="card-number" class="terminal-label">보안 카드 식별번호</label>
-                            <input type="text" id="card-number" required placeholder="0000 - 0000 - 0000 - 0000" maxlength="19" class="terminal-input">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="card-expiry" class="terminal-label">만료 일자 (MM/YY)</label>
-                                <input type="text" id="card-expiry" required placeholder="MM/YY" maxlength="5" class="terminal-input">
-                            </div>
-                            <div class="form-group">
-                                <label for="card-cvc" class="terminal-label">보안 암호 (CVC)</label>
-                                <input type="password" id="card-cvc" required placeholder="***" maxlength="3" class="terminal-input">
-                            </div>
-                        </div>
-                        <div class="form-group-checkbox">
-                            <input type="checkbox" id="agree-terms" required>
-                            <label for="agree-terms" class="terminal-muted">본 데이터 전송 규정 및 자산 사용 동의에 승인합니다.</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block terminal-btn" id="pay-submit-btn">
-                            [ 암호화 전송 및 결제 승인 ]
-                        </button>
-                    </form>
+                    </div>
                 </div>
                 
-                <!-- Purchase Success View (Corrupted terminal) -->
-                <div class="checkout-success" id="checkout-success-container">
-                    <div class="success-icon terminal-success-icon">🔑</div>
-                    <h2 class="terminal-green font-retro">추출 완료: 스팀 코드 발급</h2>
-                    <p class="success-desc terminal-muted">보안 데이터 검증 승인. 귀하의 기밀 생존용 코드를 복사하십시오.</p>
-                    <div class="steam-key-box terminal-key-box">
-                        <span class="steam-key terminal-yellow" id="generated-steam-key">BC-E901-D34A-C992-E23B</span>
-                        <button class="btn btn-secondary btn-sm terminal-copy-btn" id="copy-key-btn">[코드 복사]</button>
+                <div class="panel data-panel log-panel">
+                    <h3>EXPEDITION LOG #092</h3>
+                    <div class="log-content">
+                        <p>> Team entered threshold at 0800.</p>
+                        <p>> Contact lost at 0845.</p>
+                        <p>> Last transmission: "The walls... they shifted."</p>
+                        <p>> Status: M.I.A.</p>
                     </div>
-                    <p class="success-note terminal-muted">동일 코드가 아카이브 전송을 위해 이메일(<span id="success-email" class="terminal-green"></span>)로 백업되었습니다.</p>
-                    <button class="btn btn-outline btn-block terminal-close-btn" id="success-close-btn">[ 터미널 종료 ]</button>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
-
-    <!-- Toast Notification (Corrupted) -->
-    <div class="toast terminal-toast" id="toast">SYSTEM: 코드가 복사되었습니다.</div>
 
     <script src="app.js?v=2"></script>
 </body>
 </html>
-
